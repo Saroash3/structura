@@ -1,0 +1,201 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Structura palette (dark theme). These are the only colours used. */
+:root {
+  --background: #121212;
+  --surface: #1e1e1e;
+  --stage: #0d0d0d;
+  --border: #404040;
+  --text: #f2f2f2;
+  --muted: #a8a8a8;
+  --accent: #ff7a1a;
+  --accent2: #4cc9f0;
+  --on-accent: #000000;
+
+  /* shadcn tokens mapped onto the palette */
+  --foreground: var(--text);
+  --card: var(--surface);
+  --card-foreground: var(--text);
+  --popover: var(--surface);
+  --popover-foreground: var(--text);
+  --primary: var(--accent);
+  --primary-foreground: var(--on-accent);
+  --secondary: var(--surface);
+  --secondary-foreground: var(--text);
+  --muted-foreground: var(--muted);
+  --accent-foreground: var(--on-accent);
+  --destructive: #ff6b6b;
+  --input: var(--border);
+  --ring: var(--accent2);
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-stage: var(--stage);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent2: var(--accent2);
+  --color-on-accent: var(--on-accent);
+
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-space-grotesk);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  --animate-shiny-text: shiny-text 8s infinite;
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes shiny-text {
+  0%, 90%, 100% {
+    background-position: calc(-100% - var(--shiny-width)) 0;
+    }
+  30%, 60% {
+    background-position: calc(100% + var(--shiny-width)) 0;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-background text-text font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-heading;
+  }
+  /* visible focus ring on everything keyboard-focusable */
+  :focus-visible {
+    outline: 2px solid var(--accent2);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 35%, transparent);
+  }
+  /* Native scrolling only. In-page links (#how, #topics) glide, unless the user asked for less motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  /* Anchored sections land below the 64px sticky nav instead of under it. */
+  section[id],
+  [id$="-title"] {
+    scroll-margin-top: 5rem;
+  }
+  /* Areas marked offscreen (see usePauseOffscreen) stop their CSS loops, e.g. the marquee and pings. */
+  [data-offscreen="true"] *,
+  [data-offscreen="true"] *::before,
+  [data-offscreen="true"] *::after {
+    animation-play-state: paused !important;
+  }
+}
+
+/* ---- shared layout primitives ---- */
+@utility container-page {
+  width: 100%;
+  max-width: 1152px; /* 72rem */
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 640px) {
+    padding-inline: 1.5rem;
+  }
+}
+@utility section-y {
+  padding-block: 6rem; /* 96px */
+  @media (width >= 1024px) {
+    padding-block: 8rem; /* 128px */
+  }
+}
+/* small uppercase label above section titles */
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, ui-monospace), monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+@utility text-display {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: clamp(2.5rem, 1.6rem + 4.2vw, 4.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+@utility text-title {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: clamp(1.875rem, 1.4rem + 2vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+/* Reduced motion: stop CSS keyframe loops (marquee, shimmer, pulses). Motion handles JS animations. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* loading shimmer: a soft light band sweeping across a placeholder */
+@utility shimmer {
+  background: linear-gradient(100deg, transparent 20%, color-mix(in oklab, var(--text) 5%, transparent) 50%, transparent 80%);
+  background-size: 200% 100%;
+  animation: shimmer-sweep 1.8s linear infinite;
+}
+@keyframes shimmer-sweep {
+  from { background-position: 150% 0; }
+  to { background-position: -50% 0; }
+}

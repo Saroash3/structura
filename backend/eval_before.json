@@ -1,0 +1,741 @@
+{
+ "what is stack": {
+  "structure": "stack",
+  "total": 48.42,
+  "scenes": [
+   {
+    "ops": [],
+    "narration": "A stack is like a vertical pile of plates where you can only add or remove items from the very top.",
+    "duration": 4.934,
+    "role": "setup",
+    "kind": "stack"
+   },
+   {
+    "ops": [],
+    "narration": "Think of a stack of plates on a table: you can only add a new plate to the top, and you must take the top plate off first.",
+    "duration": 6.606,
+    "role": "core",
+    "kind": "stack"
+   },
+   {
+    "ops": [],
+    "narration": "The key rule is last in, first out. Adding an item is called push, and removing the top item is called pop.",
+    "duration": 6.653,
+    "role": "core",
+    "kind": "stack"
+   },
+   {
+    "ops": [
+     {
+      "op": "push",
+      "args": [
+       12
+      ]
+     }
+    ],
+    "narration": "Push 12 onto the stack. The top is now 12 and the size is 1.",
+    "duration": 4.017,
+    "role": "core",
+    "kind": "stack"
+   },
+   {
+    "ops": [
+     {
+      "op": "push",
+      "args": [
+       24
+      ]
+     }
+    ],
+    "narration": "We push 24 onto the stack. The top is now 24.",
+    "duration": 3.576,
+    "role": "core",
+    "kind": "stack"
+   },
+   {
+    "ops": [
+     {
+      "op": "push",
+      "args": [
+       36
+      ]
+     }
+    ],
+    "narration": "We push 36 onto the stack. The top is now 36.",
+    "duration": 3.715,
+    "role": "core",
+    "kind": "stack"
+   },
+   {
+    "ops": [
+     {
+      "op": "pop",
+      "args": []
+     }
+    ],
+    "narration": "We pop 36 off the top. 36 was the last one in, so it leaves first. The top is now 24.",
+    "duration": 6.803,
+    "role": "core",
+    "kind": "stack"
+   },
+   {
+    "ops": [],
+    "narration": "Stacks are used everywhere in computers, such as the undo button in text editors and tracking function calls.",
+    "duration": 6.107,
+    "role": "core",
+    "kind": "stack"
+   },
+   {
+    "ops": [],
+    "narration": "Takeaways: add items on top, take items off the top, and the newest item always leaves first.",
+    "duration": 6.014,
+    "role": "recap",
+    "kind": "stack"
+   }
+  ],
+  "quiz": [
+   "If you push 12, then 24, and then 36 onto a stack, which number comes out first when you pop?",
+   "Which everyday feature operates like a stack?",
+   "Suppose a stack holds [12, 24, 36] from bottom to top. After you pop twice, what value is at the top?"
+  ],
+  "quiz_kinds": [
+   "principle",
+   "real_world",
+   "trace"
+  ],
+  "answer_points": [
+   {
+    "id": "p1",
+    "kind": "definition",
+    "point": "What it is, in plain words",
+    "visual": "none"
+   },
+   {
+    "id": "p2",
+    "kind": "analogy",
+    "point": "An everyday analogy",
+    "visual": "current state"
+   },
+   {
+    "id": "p3",
+    "kind": "rule",
+    "point": "The key rule and its vocabulary",
+    "visual": "current state"
+   },
+   {
+    "id": "p4",
+    "kind": "demo",
+    "point": "A demo that proves the rule",
+    "visual": "ops: push, pop"
+   },
+   {
+    "id": "p5",
+    "kind": "uses",
+    "point": "Where it is used in real life",
+    "visual": "current state"
+   },
+   {
+    "id": "p6",
+    "kind": "recap",
+    "point": "The takeaways",
+    "visual": "current state"
+   }
+  ],
+  "point_of_scene": [
+   "p1",
+   "p2",
+   "p3",
+   "p4",
+   "p4",
+   "p4",
+   "p4",
+   "p5",
+   "p6"
+  ],
+  "quiz_full": [
+   {
+    "question": "If you push 12, then 24, and then 36 onto a stack, which number comes out first when you pop?",
+    "options": [
+     "36",
+     "24",
+     "12"
+    ],
+    "answer_index": 0,
+    "explanation": "Last in, first out: 36 went in last, so it comes out first.",
+    "kind": "principle"
+   },
+   {
+    "question": "Which everyday feature operates like a stack?",
+    "options": [
+     "A printer queue: the first document sent prints first",
+     "A phone book sorted by name",
+     "The undo button: your most recent change is undone first",
+     "A shuffled music playlist"
+    ],
+    "answer_index": 2,
+    "explanation": "Undo always takes back the newest change first, which is last in, first out.",
+    "kind": "real_world"
+   },
+   {
+    "question": "Suppose a stack holds [12, 24, 36] from bottom to top. After you pop twice, what value is at the top?",
+    "options": [
+     "24",
+     "12",
+     "36"
+    ],
+    "answer_index": 1,
+    "explanation": "Running it on a real stack: two pops leave [12], so the top is 12.",
+    "kind": "trace"
+   }
+  ]
+ },
+ "what is time complexity of bubble sort": {
+  "structure": "bubble_sort",
+  "total": 141.11,
+  "scenes": [
+   {
+    "ops": [],
+    "narration": "What is the time complexity of bubble sort, and why? Let's count the work it really does as the list grows.",
+    "duration": 6.177,
+    "role": "setup",
+    "kind": "bubble_sort"
+   },
+   {
+    "ops": [
+     {
+      "op": "load",
+      "args": [
+       5,
+       1,
+       4,
+       2
+      ]
+     }
+    ],
+    "narration": "We measure time by counting comparisons: the main work bubble sort does. Here are n = 4 values: Array is now [5, 1, 4, 2].",
+    "duration": 9.358,
+    "role": "setup",
+    "kind": "bubble_sort"
+   },
+   {
+    "ops": [
+     {
+      "op": "step",
+      "args": []
+     },
+     {
+      "op": "step",
+      "args": []
+     },
+     {
+      "op": "step",
+      "args": []
+     }
+    ],
+    "narration": "Pass 1: 5 and 1 swap, 5 and 4 swap, 5 and 2 swap. 3 comparisons. 5 is now in its final place. Array is now [1, 4, 2, 5].",
+    "duration": 10.321,
+    "role": "core",
+    "kind": "bubble_sort"
+   },
+   {
+    "ops": [
+     {
+      "op": "step",
+      "args": []
+     },
+     {
+      "op": "step",
+      "args": []
+     }
+    ],
+    "narration": "Pass 2: 1 and 4 stay, 4 and 2 swap. 2 comparisons, 3 + 2 = 5 so far. 4 is now in its final place. Array is now [1, 2, 4, 5].",
+    "duration": 11.471,
+    "role": "core",
+    "kind": "bubble_sort"
+   },
+   {
+    "ops": [
+     {
+      "op": "step",
+      "args": []
+     }
+    ],
+    "narration": "Pass 3: 1 and 2 stay. 1 comparison, 3 + 2 + 1 = 6 so far. No swaps in this pass. Array is now [1, 2, 4, 5], and the list is sorted.",
+    "duration": 11.401,
+    "role": "core",
+    "kind": "bubble_sort"
+   },
+   {
+    "ops": [],
+    "narration": "Add up the passes: 3 + 2 + 1 = 6 comparisons, which is n(n - 1) / 2 = 4 \u00d7 3 / 2 = 6. For any n, the passes make (n - 1) + (n - 2) + ... + 1, which adds up to n(n - 1) / 2.",
+    "duration": 17.682,
+    "role": "core",
+    "kind": "bubble_sort"
+   },
+   {
+    "ops": [],
+    "narration": "Big O keeps only the fastest-growing part: n(n - 1) / 2 is about n\u00b2 / 2, and we drop the 1/2, so bubble sort is O(n\u00b2), quadratic time, which means the work grows with n squared. In plain words: double the items and the work grows about 4 times.",
+    "duration": 17.461,
+    "role": "core",
+    "kind": "bubble_sort"
+   },
+   {
+    "ops": [
+     {
+      "op": "bubble_sort",
+      "args": [
+       4,
+       8,
+       16,
+       100
+      ]
+     }
+    ],
+    "narration": "Counted for real: n = 4 needs 6 comparisons, n = 8 needs 28, n = 16 needs 120, and n = 100 needs 4950. From n = 8 to n = 16, the work grows about 4 times.",
+    "duration": 15.662,
+    "role": "core",
+    "kind": "growth"
+   },
+   {
+    "ops": [
+     {
+      "op": "reload",
+      "args": [
+       1,
+       2,
+       4,
+       5
+      ]
+     },
+     {
+      "op": "step",
+      "args": []
+     },
+     {
+      "op": "step",
+      "args": []
+     },
+     {
+      "op": "step",
+      "args": []
+     }
+    ],
+    "narration": "Best case: an already sorted list, [1, 2, 4, 5]. Pass 1 makes 3 comparisons and no swaps, so bubble sort stops early: n - 1 = 3, which is O(n): the work grows with n, not with n\u00b2.",
+    "duration": 15.569,
+    "role": "core",
+    "kind": "bubble_sort"
+   },
+   {
+    "ops": [
+     {
+      "op": "reload",
+      "args": [
+       5,
+       4,
+       2,
+       1
+      ]
+     },
+     {
+      "op": "step",
+      "args": []
+     },
+     {
+      "op": "step",
+      "args": []
+     },
+     {
+      "op": "step",
+      "args": []
+     },
+     {
+      "op": "step",
+      "args": []
+     },
+     {
+      "op": "step",
+      "args": []
+     },
+     {
+      "op": "step",
+      "args": []
+     }
+    ],
+    "narration": "Worst case: a reversed list, [5, 4, 2, 1]. Every comparison swaps and all 3 passes run: 3 + 2 + 1 = 6 comparisons, the full n(n - 1) / 2. Array is now [1, 2, 4, 5].",
+    "duration": 15.546,
+    "role": "core",
+    "kind": "bubble_sort"
+   },
+   {
+    "ops": [],
+    "narration": "Takeaway: about n\u00b2 / 2 comparisons in the worst case makes bubble sort O(n\u00b2); only a list that is already sorted lets it stop after its first pass, O(n).",
+    "duration": 10.461,
+    "role": "recap",
+    "kind": "bubble_sort"
+   }
+  ],
+  "quiz": [
+   "In the worst case, how many comparisons does bubble sort make on 5 items?",
+   "If the input doubles from 8 to 16 items, how much work does bubble sort do in the worst case, compared with before?",
+   "Which input is the best case for bubble sort?"
+  ],
+  "quiz_kinds": [
+   "complexity",
+   "complexity",
+   "complexity"
+  ],
+  "answer_points": [
+   {
+    "id": "p1",
+    "kind": "goal",
+    "point": "The question: what is the time complexity of bubble sort, and why?",
+    "visual": "none"
+   },
+   {
+    "id": "p2",
+    "kind": "measure",
+    "point": "What we measure: comparisons, the main work bubble sort does.",
+    "visual": "the input of size n"
+   },
+   {
+    "id": "p3",
+    "kind": "demo",
+    "point": "Run the real algorithm to completion with a live counter.",
+    "visual": "live counter, grouped by pass"
+   },
+   {
+    "id": "p4",
+    "kind": "derive",
+    "point": "Add up the counts and match the formula n(n - 1) / 2.",
+    "visual": "per-pass tally"
+   },
+   {
+    "id": "p5",
+    "kind": "big_o",
+    "point": "Big-O in plain words: keep the fastest-growing part, so O(n\u00b2).",
+    "visual": "none"
+   },
+   {
+    "id": "p6",
+    "kind": "growth",
+    "point": "The real counts for bigger inputs: n = 4, 8, 16, 100.",
+    "visual": "growth table"
+   },
+   {
+    "id": "p7",
+    "kind": "best",
+    "point": "Best case, run for real: a list that is already sorted, O(n).",
+    "visual": "the best input with its counter"
+   },
+   {
+    "id": "p8",
+    "kind": "worst",
+    "point": "Worst case, run for real: a list in reverse order, O(n\u00b2).",
+    "visual": "the worst input with its counter"
+   },
+   {
+    "id": "p9",
+    "kind": "recap",
+    "point": "Takeaway: O(n\u00b2), and why.",
+    "visual": "none"
+   }
+  ],
+  "point_of_scene": [
+   "p1",
+   "p2",
+   "p3",
+   "p3",
+   "p3",
+   "p4",
+   "p5",
+   "p6",
+   "p7",
+   "p8",
+   "p9"
+  ],
+  "quiz_full": [
+   {
+    "question": "In the worst case, how many comparisons does bubble sort make on 5 items?",
+    "options": [
+     "20",
+     "25",
+     "10",
+     "5"
+    ],
+    "answer_index": 2,
+    "explanation": "The passes make 4 + 3 + 2 + 1 = 10 comparisons, which is n(n - 1) / 2 = 5 \u00d7 4 / 2.",
+    "kind": "complexity"
+   },
+   {
+    "question": "If the input doubles from 8 to 16 items, how much work does bubble sort do in the worst case, compared with before?",
+    "options": [
+     "about 2 times as much",
+     "about the same",
+     "about 4 times as much",
+     "about 8 times as much"
+    ],
+    "answer_index": 2,
+    "explanation": "Counted for real: 28 comparisons for 8 items and 120 for 16, about 4 times as much (O(n\u00b2)).",
+    "kind": "complexity"
+   },
+   {
+    "question": "Which input is the best case for bubble sort?",
+    "options": [
+     "a list of random values",
+     "a list that is already sorted",
+     "a list in reverse order",
+     "a list with the largest value first"
+    ],
+    "answer_index": 1,
+    "explanation": "A sorted list needs one pass with no swaps: 4 comparisons for 5 items instead of 10.",
+    "kind": "complexity"
+   }
+  ]
+ },
+ "how do I delete a node from the middle of a linked list": {
+  "structure": "linked_list",
+  "total": 76.44,
+  "scenes": [
+   {
+    "ops": [],
+    "narration": "How do you remove a node from the middle without breaking the chain? Think of it like unlinking a paperclip from a chain.",
+    "duration": 5.642,
+    "role": "setup",
+    "kind": "linked_list"
+   },
+   {
+    "ops": [
+     {
+      "op": "init",
+      "args": [
+       10,
+       20,
+       30,
+       40
+      ]
+     }
+    ],
+    "narration": "Our list has head pointing to 10, which links to 20, 30, and 40, ending with null.",
+    "duration": 5.968,
+    "role": "setup",
+    "kind": "linked_list"
+   },
+   {
+    "ops": [
+     {
+      "op": "walk",
+      "args": [
+       10
+      ]
+     }
+    ],
+    "narration": "We start at the head and move to 10. 10 points to 20, so we keep going to find our target 30.",
+    "duration": 5.712,
+    "role": "core",
+    "kind": "linked_list"
+   },
+   {
+    "ops": [
+     {
+      "op": "walk",
+      "args": [
+       20
+      ]
+     }
+    ],
+    "narration": "We move to 20. 20 points to 30, our target, so 20 is the node right before it and we stop.",
+    "duration": 6.304,
+    "role": "core",
+    "kind": "linked_list"
+   },
+   {
+    "ops": [
+     {
+      "op": "delete_value",
+      "args": [
+       30
+      ]
+     }
+    ],
+    "narration": "20's next pointer now points to 40, so 30 is skipped and no longer reachable. The list is now head -> 10 -> 20 -> 40 -> null.",
+    "duration": 8.29,
+    "role": "core",
+    "kind": "linked_list"
+   },
+   {
+    "ops": [],
+    "narration": "We stop at the node before the target, not at the target itself, because only the previous node holds the next pointer we need to change.",
+    "duration": 7.396,
+    "role": "core",
+    "kind": "linked_list"
+   },
+   {
+    "ops": [],
+    "narration": "A singly linked list has no backward pointers, so while walking we always look at the node ahead to see if it is the target.",
+    "duration": 6.351,
+    "role": "core",
+    "kind": "linked_list"
+   },
+   {
+    "ops": [],
+    "narration": "Changing that single pointer is the whole deletion: no other node moves or changes.",
+    "duration": 4.667,
+    "role": "core",
+    "kind": "linked_list"
+   },
+   {
+    "ops": [
+     {
+      "op": "delete_value",
+      "args": [
+       99
+      ]
+     }
+    ],
+    "narration": "If we try to delete 99 which is not in the list, the pointers stay the same and nothing changes.",
+    "duration": 5.515,
+    "role": "edge_case",
+    "kind": "linked_list"
+   },
+   {
+    "ops": [],
+    "narration": "Edge case: if the target is the head, there is no node before it, so we simply move the head pointer to the second node.",
+    "duration": 6.885,
+    "role": "edge_case",
+    "kind": "linked_list"
+   },
+   {
+    "ops": [],
+    "narration": "Edge case: if the target is the tail, the node before it becomes the new tail and its next pointer is set to null.",
+    "duration": 6.525,
+    "role": "edge_case",
+    "kind": "linked_list"
+   },
+   {
+    "ops": [],
+    "narration": "To delete a middle node, walk to the node before it and update that node's next pointer to skip the target and connect to the following node.",
+    "duration": 7.187,
+    "role": "recap",
+    "kind": "linked_list"
+   }
+  ],
+  "quiz": [
+   "In the linked list head -> 10 -> 20 -> 30 -> 40 -> null, after you delete 30, what does node 20 point to?",
+   "When you delete 30 from the linked list head -> 10 -> 20 -> 30 -> 40 -> null, which node's next pointer changes?",
+   "If you instead delete the tail 40 from the linked list head -> 10 -> 20 -> 30 -> 40 -> null, what does 30 point to afterwards?"
+  ],
+  "quiz_kinds": [
+   "trace",
+   "principle",
+   "trace"
+  ],
+  "answer_points": [
+   {
+    "id": "p1",
+    "kind": "goal",
+    "point": "Delete a middle node by updating pointers",
+    "visual": "none"
+   },
+   {
+    "id": "p2",
+    "kind": "steps",
+    "point": "Delete a middle node by updating pointers",
+    "visual": "ops: init, walk, delete_value"
+   },
+   {
+    "id": "p3",
+    "kind": "edge",
+    "point": "Deleting a missing value changes nothing",
+    "visual": "ops: delete_value"
+   },
+   {
+    "id": "p4",
+    "kind": "recap",
+    "point": "Rewire the previous node to skip the target",
+    "visual": "current state"
+   },
+   {
+    "id": "p5",
+    "kind": "explain",
+    "point": "We stop at the node before the target, not at the target itself, because only the previous node holds the next pointer w",
+    "visual": "current state"
+   },
+   {
+    "id": "p6",
+    "kind": "explain",
+    "point": "A singly linked list has no backward pointers, so while walking we always look at the node ahead to see if it is the tar",
+    "visual": "current state"
+   },
+   {
+    "id": "p7",
+    "kind": "explain",
+    "point": "Changing that single pointer is the whole deletion: no other node moves or changes.",
+    "visual": "current state"
+   },
+   {
+    "id": "p8",
+    "kind": "edge",
+    "point": "If the target is the head, there is no node before it, so we simply move the head pointer to the second node.",
+    "visual": "current state"
+   },
+   {
+    "id": "p9",
+    "kind": "edge",
+    "point": "If the target is the tail, the node before it becomes the new tail and its next pointer is set to null.",
+    "visual": "current state"
+   }
+  ],
+  "point_of_scene": [
+   "p1",
+   "p2",
+   "p2",
+   "p2",
+   "p2",
+   "p5",
+   "p6",
+   "p7",
+   "p3",
+   "p8",
+   "p9",
+   "p4"
+  ],
+  "quiz_full": [
+   {
+    "question": "In the linked list head -> 10 -> 20 -> 30 -> 40 -> null, after you delete 30, what does node 20 point to?",
+    "options": [
+     "20",
+     "30",
+     "null",
+     "40"
+    ],
+    "answer_index": 3,
+    "explanation": "20 was the node before 30, so its next pointer is rewired past 30 to 40. The list becomes head -> 10 -> 20 -> 40 -> null.",
+    "kind": "trace"
+   },
+   {
+    "question": "When you delete 30 from the linked list head -> 10 -> 20 -> 30 -> 40 -> null, which node's next pointer changes?",
+    "options": [
+     "30",
+     "20",
+     "10",
+     "40"
+    ],
+    "answer_index": 1,
+    "explanation": "Only the node before 30, which is 20, changes its next pointer; 30 is skipped and no other node moves.",
+    "kind": "principle"
+   },
+   {
+    "question": "If you instead delete the tail 40 from the linked list head -> 10 -> 20 -> 30 -> 40 -> null, what does 30 point to afterwards?",
+    "options": [
+     "40",
+     "20",
+     "10",
+     "null"
+    ],
+    "answer_index": 3,
+    "explanation": "30 becomes the new tail, so its next pointer is set to null.",
+    "kind": "trace"
+   }
+  ]
+ }
+}

@@ -1,0 +1,214 @@
+{
+ "what is a linked list and why do we use it": {
+  "structure": "linked_list",
+  "total": 44.66,
+  "scenes": [
+   {
+    "ops": [],
+    "narration": "Let us explore what a linked list is and why we use it.",
+    "duration": 3.146,
+    "role": "setup",
+    "kind": "linked_list"
+   },
+   {
+    "ops": [
+     {
+      "op": "init",
+      "args": [
+       10,
+       20,
+       30
+      ]
+     }
+    ],
+    "narration": "Here is our list: head -> 10 -> 20 -> 30 -> null. This shows: a linked list is a chain of nodes where each node holds a value and a pointer to the next node. Node means a container holding a value and a pointer to the next item. Pointer means a reference or link that tells us where to find the next item in memory.",
+    "duration": 17.728,
+    "role": "core",
+    "kind": "linked_list"
+   },
+   {
+    "ops": [
+     {
+      "op": "insert_head",
+      "args": [
+       5
+      ]
+     }
+    ],
+    "narration": "We use linked lists because adding new items is extremely efficient. By inserting 5 at the head, the new node points directly to 10, updating the chain instantly without shifting any other items: head -> 5 -> 10 -> 20 -> 30 -> null.",
+    "duration": 15.499,
+    "role": "core",
+    "kind": "linked_list"
+   },
+   {
+    "ops": [],
+    "narration": "In summary, a linked list connects discrete nodes using pointers, allowing us to insert items quickly without rearranging the entire collection.",
+    "duration": 8.29,
+    "role": "recap",
+    "kind": "linked_list"
+   }
+  ],
+  "quiz": [
+   "After insert head 5, what is at the head?",
+   "After all the lesson's operations (init 10 20 30, insert_head 5), what is the head?",
+   "After all the lesson's operations (init 10 20 30, insert_head 5), how many items does the linked list hold?"
+  ],
+  "quiz_kinds": [
+   "core",
+   "trace",
+   "trace"
+  ],
+  "answer_points": [
+   {
+    "id": "intro",
+    "kind": "goal",
+    "point": "The question: What is a linked list and why do we use it?",
+    "visual": "none",
+    "requirement_id": null
+   },
+   {
+    "id": "p1",
+    "kind": "definition",
+    "point": "A linked list is a chain of nodes where each node holds a value and a pointer to the next node.",
+    "visual": "state",
+    "requirement_id": "r1"
+   },
+   {
+    "id": "p2",
+    "kind": "reason",
+    "point": "We use it because inserting new items is fast and does not require shifting elements like arrays do.",
+    "visual": "trace",
+    "requirement_id": "r2"
+   },
+   {
+    "id": "recap",
+    "kind": "recap",
+    "point": "The answer, restated in new words",
+    "visual": "none",
+    "requirement_id": null
+   }
+  ],
+  "point_of_scene": [
+   "intro",
+   "p1",
+   "p2",
+   "recap"
+  ]
+ },
+ "what is a queue": {
+  "structure": "queue",
+  "total": 39.75,
+  "scenes": [
+   {
+    "ops": [],
+    "narration": "Let's explore how a queue organizes data just like a line of people waiting for tickets.",
+    "duration": 4.888,
+    "role": "setup",
+    "kind": "queue"
+   },
+   {
+    "ops": [
+     {
+      "op": "init",
+      "args": [
+       10,
+       20,
+       30
+      ]
+     }
+    ],
+    "narration": "A queue is a data structure that follows FIFO, which means First In, First Out. The items are now 10, 20, and 30, with 10 at the front.",
+    "duration": 8.615,
+    "role": "core",
+    "kind": "queue"
+   },
+   {
+    "ops": [
+     {
+      "op": "enqueue",
+      "args": [
+       40
+      ]
+     }
+    ],
+    "narration": "Enqueue 40 at the back. The front is 10, the back is 40. This shows: enqueue adds new items to the back of the queue. Enqueue means adding an item to the back of the line.",
+    "duration": 9.543,
+    "role": "core",
+    "kind": "queue"
+   },
+   {
+    "ops": [
+     {
+      "op": "dequeue",
+      "args": []
+     }
+    ],
+    "narration": "Dequeue 10 from the front. The front is now 20. This shows: dequeue removes items from the front of the queue. Dequeue means removing an item from the front of the line.",
+    "duration": 9.16,
+    "role": "core",
+    "kind": "queue"
+   },
+   {
+    "ops": [],
+    "narration": "In summary, a queue manages items in a strict arrival order where newcomers wait at the back and the oldest members leave from the front.",
+    "duration": 7.546,
+    "role": "recap",
+    "kind": "queue"
+   }
+  ],
+  "quiz": [
+   "After enqueue 40, what is at the back?",
+   "The queue holds [10, 20, 30, 40]. Which item does dequeue remove?",
+   "After all the lesson's operations (init 10 20 30, enqueue 40, dequeue), what is the front?"
+  ],
+  "quiz_kinds": [
+   "core",
+   "trace",
+   "trace"
+  ],
+  "answer_points": [
+   {
+    "id": "intro",
+    "kind": "goal",
+    "point": "The question: What is a queue and how does it work?",
+    "visual": "none",
+    "requirement_id": null
+   },
+   {
+    "id": "p1",
+    "kind": "concept",
+    "point": "A queue is a line of data items operating on a FIFO principle.",
+    "visual": "state",
+    "requirement_id": "r1"
+   },
+   {
+    "id": "p2",
+    "kind": "operation",
+    "point": "Enqueue adds new items to the back of the queue.",
+    "visual": "trace",
+    "requirement_id": "r2"
+   },
+   {
+    "id": "p3",
+    "kind": "operation",
+    "point": "Dequeue removes items from the front of the queue.",
+    "visual": "trace",
+    "requirement_id": "r3"
+   },
+   {
+    "id": "recap",
+    "kind": "recap",
+    "point": "The answer, restated in new words",
+    "visual": "none",
+    "requirement_id": null
+   }
+  ],
+  "point_of_scene": [
+   "intro",
+   "p1",
+   "p2",
+   "p3",
+   "recap"
+  ]
+ }
+}

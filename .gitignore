@@ -1,0 +1,32 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# node / next
+node_modules/
+.next/
+out/
+next-env.d.ts
+
+# caches and generated audio
+backend/cache/
+backend/audio_cache/
+backend/voices/
+*.wav
+*.onnx
+*.onnx.json
+
+# exported lesson videos
+backend/video_cache/
+*.mp4
+
+# editor settings
+.vscode/
