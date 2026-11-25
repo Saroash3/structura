@@ -266,9 +266,7 @@ Frontend:
 
 - **Frontend:** Vercel project `structura`, live at https://structura-gules.vercel.app. It deploys from `frontend/` with `vercel deploy --prod`; `frontend/vercel.json` sets the Next.js framework (without it every page was a 404).
 - **Vercel production env:** `MONGODB_URI`, `AUTH_SECRET`, `NEXT_PUBLIC_API_URL=/api/backend`, `BACKEND_URL`.
-- **Backend:** runs on the laptop (`uvicorn main:app` on port 8000), exposed by ngrok on a SECOND ngrok account, with its own config file at `%LOCALAPPDATA%
-grok\structura.yml` (web UI on port 4041). Start it with `ngrok http 8000 --config "%LOCALAPPDATA%
-grok\structura.yml"`. Its fixed domain is `rut-glamour-nanometer.ngrok-free.dev` (= `BACKEND_URL`).
+- **Backend:** runs on the laptop (`uvicorn main:app` on port 8000), exposed by ngrok on a SECOND ngrok account, with its own config file at `%LOCALAPPDATA%\ngrok\structura.yml` (web UI on port 4041). Start it with `ngrok http 8000 --config "%LOCALAPPDATA%\ngrok\structura.yml"`. Its fixed domain is `rut-glamour-nanometer.ngrok-free.dev` (= `BACKEND_URL`).
   - The default ngrok account and its domain belong to the FYP actor-coach app on port 8001. Do not stop that tunnel.
 - **Proxy:** `frontend/app/api/backend/[...path]/route.ts` forwards to `BACKEND_URL` with `ngrok-skip-browser-warning`, so the browser never sees the tunnel.
 - **Export:** `backend/.env` `FRONTEND_ORIGINS` lists the Vercel site, so it may request video exports; the render page fetches the lesson through `api_base` (the proxy).
