@@ -262,6 +262,19 @@ Frontend:
 - **Scroll smoothness:** Lenis has been removed in favour of native scrolling, and a Playwright check measured wheel input settling in about 60 ms. Confirm with the user that it feels right.
 - **Gemini 503 handling:** fallback, backoff and the friendly busy UI are in place. Keep watching for persistent `ai_busy` errors.
 
+## Deployment (2026-11-25)
+
+- **Frontend:** Vercel project `structura`, live at https://structura-gules.vercel.app. It deploys from `frontend/` with `vercel deploy --prod`; `frontend/vercel.json` sets the Next.js framework (without it every page was a 404).
+- **Vercel production env:** `MONGODB_URI`, `AUTH_SECRET`, `NEXT_PUBLIC_API_URL=/api/backend`, `BACKEND_URL`.
+- **Backend:** runs on the laptop (`uvicorn main:app` on port 8000), exposed by ngrok on a SECOND ngrok account, with its own config file at `%LOCALAPPDATA%
+grok\structura.yml` (web UI on port 4041). Start it with `ngrok http 8000 --config "%LOCALAPPDATA%
+grok\structura.yml"`. Its fixed domain is `rut-glamour-nanometer.ngrok-free.dev` (= `BACKEND_URL`).
+  - The default ngrok account and its domain belong to the FYP actor-coach app on port 8001. Do not stop that tunnel.
+- **Proxy:** `frontend/app/api/backend/[...path]/route.ts` forwards to `BACKEND_URL` with `ngrok-skip-browser-warning`, so the browser never sees the tunnel.
+- **Export:** `backend/.env` `FRONTEND_ORIGINS` lists the Vercel site, so it may request video exports; the render page fetches the lesson through `api_base` (the proxy).
+- **Atlas** accepts Vercel: a live signup, login and dashboard check passed.
+- **New lessons** need the laptop, the backend and the tunnel all running.
+
 ## Gotchas
 
 - Edit scripts that pass `\b` through Python heredocs can write backspace characters into files, so grep for `\x08` after scripted edits. Prefer the Write and Edit tools, or a script file written with the Write tool.
@@ -271,4 +284,4 @@ Frontend:
 - A new TLS connection to Atlas takes about 3.7 s from this machine. `instrumentation.ts` opens the connection at server start, and `lib/db.ts` keeps `minPoolSize: 4` open and must NOT set `maxIdleTimeMS`, which made requests wait for new sockets (2–6 s loads). Network blips (18 s loads, then "could not load") are handled by a 5 s heartbeat, `socketTimeoutMS`, a single retry of every read in `lib/data.ts` (`read()`), and the dashboard's `RetryNotice`, which re-fetches by itself.
 - The lesson schema needs `minimize: false`. Mongoose's default deletes empty objects, such as a state's `last: {}`, which made saved lessons crash the stage. `Stage` also tolerates a missing `last`, so lessons saved earlier still open.
 - `next/dynamic` must only be called from Client Components (see `components/landing/lazy-sections.tsx`).
-- Nothing has been committed to git yet. Commit only when the user asks.
+- The repo is public at https://github.com/Saroash3/structura. Commit and push only when the user asks.
