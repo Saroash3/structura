@@ -242,6 +242,17 @@ If the backend runs elsewhere, set `NEXT_PUBLIC_API_URL` for the frontend.
 
 Open a lesson (in `/app` or a saved one in `/lesson/[id]`) and press **Download video** under the player. The MP4 is usually ready already (it is made in the background a few seconds after the lesson appears); otherwise progress shows the stages (rendering the animation, adding the voice, done) and a Cancel button. Then the MP4 downloads (`structura-<topic>.mp4`, 1280x720, H.264 + AAC, as long as the lesson plus a short quiz slide). The backend renders from the frontend that asked (localhost only), so both servers must be running. Files are cached in `backend/video_cache/` (gitignored), keyed by lesson id and a hash of everything drawn or spoken.
 
+### Deploying (Vercel + backend on a laptop)
+
+The frontend is deployed on Vercel (live: https://structura-gules.vercel.app). The Python backend (Gemini planning, Piper voice, video export) cannot run on Vercel, so it runs on a laptop and is exposed with an ngrok tunnel. The browser only talks to the Vercel site: `frontend/app/api/backend/[...path]/route.ts` forwards `/api/backend/*` to the tunnel.
+
+1. Backend: `cd backend && .venv/Scripts/uvicorn main:app`, and set `FRONTEND_ORIGINS=https://<your-app>.vercel.app` in `backend/.env` (allows video export for that site).
+2. Tunnel: `ngrok http 8000` (a free ngrok account gives one fixed domain).
+3. Vercel project (root `frontend/`, `vercel.json` sets the Next.js framework), production env vars: `MONGODB_URI`, `AUTH_SECRET`, `NEXT_PUBLIC_API_URL=/api/backend`, `BACKEND_URL=<tunnel URL>`. Then `vercel deploy --prod`.
+4. MongoDB Atlas: Network Access must allow `0.0.0.0/0`, since Vercel has no fixed IPs.
+
+New lessons work only while the laptop, the backend and the tunnel are running; login, the dashboard and saved lessons work any time.
+
 ### Environment variables
 
 | File | Variable | Purpose |

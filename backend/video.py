@@ -50,6 +50,12 @@ MAX_DIFF = 0.5  # seconds: video vs audio vs expected duration
 LOCAL_ORIGIN = re.compile(r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$")
 
 
+def allowed_origin(origin: str) -> bool:
+    """The local frontend, or a deployed one listed in FRONTEND_ORIGINS (comma-separated, e.g. the Vercel site)."""
+    extra = {o.strip().rstrip("/") for o in os.getenv("FRONTEND_ORIGINS", "").split(",") if o.strip()}
+    return bool(LOCAL_ORIGIN.match(origin or "")) or (origin or "").rstrip("/") in extra
+
+
 class ExportError(RuntimeError):
     pass
 
@@ -448,8 +454,8 @@ def start_export(lesson: dict, origin: str, lesson_id: str | None = None, api_ba
     """Start (or reuse) an export. Returns the public job."""
     if not lesson.get("scenes"):
         raise ExportError("This lesson has no scenes to export.")
-    if not LOCAL_ORIGIN.match(origin or ""):
-        raise ExportError("Video export only renders from the local frontend (http://localhost).")
+    if not allowed_origin(origin):
+        raise ExportError("Video export only renders from the local frontend or a site listed in FRONTEND_ORIGINS.")
     out = cache_path(lesson, lesson_id)
     with _jobs_lock:
         running = next((j for j in _jobs.values() if j["path"] == str(out) and j["stage"] in ACTIVE and not j.get("cancel")), None)

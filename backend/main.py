@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import os
+import re
 from contextlib import asynccontextmanager
 from typing import Literal
 
@@ -58,6 +59,7 @@ class ExportRequest(BaseModel):
     origin: str = Field(min_length=8, max_length=100)  # the frontend that serves /render (must be localhost)
     lesson_id: str | None = Field(default=None, max_length=64)
     prefetch: bool = False  # started in the background right after a lesson is shown (a Download outranks it)
+    api_base: str | None = Field(default=None, max_length=200)  # how the /render page reaches this API (e.g. the site's proxy)
 
 
 class TTSRequest(BaseModel):
@@ -122,7 +124,7 @@ def health():
 @app.post("/export")
 def export(req: ExportRequest, request: Request):
     """Start exporting the lesson as an MP4 (or reuse the cached file). Poll GET /export/{id} for progress."""
-    api_base = str(request.base_url).rstrip("/")
+    api_base = req.api_base if req.api_base and re.match(r"^https?://", req.api_base) else str(request.base_url).rstrip("/")
     return _errors(lambda: video.start_export(req.lesson, req.origin, req.lesson_id, api_base, prefetch=req.prefetch))
 
 

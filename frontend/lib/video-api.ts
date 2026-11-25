@@ -34,7 +34,9 @@ export function startExport(lesson: Lesson, lessonId: string | null, prefetch = 
   return call<ExportJob>("/export", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ lesson: { topic, structure, scenes, quiz, analysis }, origin: window.location.origin, lesson_id: lessonId, prefetch }),
+    // the exporter's headless browser opens this site's /render page, which fetches the lesson back through API_URL
+    body: JSON.stringify({ lesson: { topic, structure, scenes, quiz, analysis }, origin: window.location.origin, lesson_id: lessonId, prefetch,
+      api_base: new URL(API_URL, window.location.origin).href.replace(/\/+$/, "") }),
   });
 }
 
