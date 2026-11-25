@@ -272,6 +272,11 @@ Frontend:
 - **Export:** `backend/.env` `FRONTEND_ORIGINS` lists the Vercel site, so it may request video exports; the render page fetches the lesson through `api_base` (the proxy).
 - **Atlas** accepts Vercel: a live signup, login and dashboard check passed.
 - **New lessons** need the laptop, the backend and the tunnel all running.
+- **Always-on (2026-11-25):** the Task Scheduler task "Structura Backend" runs at logon: `wscript deploy/start-hidden.vbs` starts `deploy/structura-supervisor.ps1` with no window.
+  - Every 20 s it restarts the backend (port 8000) and the Structura ngrok tunnel (`structura.yml`, web UI on 4041) if either is down.
+  - Logs go to `deploy/logs/` (gitignored).
+  - Do NOT start uvicorn on port 8000 or the Structura tunnel by hand while it runs; use `Stop-ScheduledTask` and kill the processes first.
+  - To restart after code changes, kill the uvicorn process; the supervisor brings it back within about 40 s.
 
 ## Gotchas
 

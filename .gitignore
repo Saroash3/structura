@@ -30,3 +30,6 @@ backend/video_cache/
 
 # editor settings
 .vscode/
+
+# supervisor logs
+deploy/logs/
